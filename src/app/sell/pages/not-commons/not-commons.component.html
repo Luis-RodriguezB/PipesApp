@@ -1,0 +1,78 @@
+<div class="text-layout mb-4">
+  <h1>Pipes no tan comunes</h1>
+  <p>Pipes incluídos en Angular</p>
+  - Usualmente en el Common Module.
+</div>
+
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Saludos <strong>{{ currentPerson.name }}</strong
+        >, es un placer
+        <strong>{{ currentPerson.gender | i18nSelect: invitationMap }}</strong>
+        a nuestro evento.
+      </p>
+      <button
+        pButton
+        type="button"
+        class="p-button-outlined p-button-help"
+        label="Cambiar Nombre"
+        (click)="changePerson()"
+      ></button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>
+        Actualmente tenemos
+        {{ clients.length | i18nPlural: clientsMap }} cliente esperando.
+      </p>
+      <button
+        pButton
+        type="button"
+        class="p-button-sm p-button-outlined p-button-danger mr-4"
+        label="Eliminar Persona"
+        (click)="deletePerson()"
+      ></button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <b>Arreglo Original</b>
+      <pre> {{ restoreClient }} </pre>
+
+      <b>slice:0:2</b>
+      <pre> {{ restoreClient | slice: 0:2 }} </pre>
+      <b>slice:2:3</b>
+      <pre> {{ restoreClient | slice: 2:3 }} </pre>
+      <b>slice:3:5</b>
+      <pre> {{ restoreClient | slice: 3:5 }} </pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="keyValue Pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let item of person | keyvalue">
+          <b>{{ item.key }}:</b> {{ item.value }}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Json Pipe" [toggleable]="true">
+      <pre>{{ person | json }}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre>{{ myObservable | async }}</pre>
+    </p-fieldset>
+  </div>
+
+</div>

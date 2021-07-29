@@ -1,0 +1,65 @@
+<div class="text-layout mb-4">
+  <h1>Pipes personalizados</h1>
+  <p>
+    Pipes creados por <b>{{ "nosotros" | capitalLetter: isCapitalLetter }}</b>
+  </p>
+  <button
+    pButton
+    type="button"
+    label="Probar Pibe"
+    class="p-button-raised p-button-rounded"
+    (click)="changeValue()"
+  ></button>
+</div>
+
+<p-toolbar>
+  <button
+    pButton
+    icon="pi pi-sort"
+    label="Toggle Mayúscula"
+    class="mr-2 mb-1 p-button-success"
+    (click)="toggleCapitalLetters()"
+  ></button>
+  <button
+    pButton
+    icon="pi pi-sort"
+    label="Por nombre"
+    class="mr-2 mb-1 p-button-help"
+    (click)="orderBy('name')"
+  ></button>
+  <button
+    pButton
+    icon="pi pi-sort"
+    label="Vuela"
+    class="mr-2 mb-1 p-button-secondary"
+    (click)="orderBy('flight')"
+  ></button>
+  <button
+    pButton
+    icon="pi pi-sort"
+    label="Por color"
+    class="mr-2 mb-1 p-button-info"
+    (click)="orderBy('color')"
+  ></button>
+</p-toolbar>
+
+<div class="grid mt-2">
+  <div class="col">
+    <p-table [value]="heroes | order: typeOrder">
+      <ng-template pTemplate="header">
+        <tr>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Vuela</th>
+          <th class="text-center">Color "Enum Values"</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-hero>
+        <tr>
+          <td class="text-center">{{ hero.name | capitalLetter: isToggleCapitalLetter }}</td>
+          <td class="text-center">{{ hero.flight | flight | capitalLetter: isToggleCapitalLetter }}</td>
+          <td class="text-center">{{ hero.color | color }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
