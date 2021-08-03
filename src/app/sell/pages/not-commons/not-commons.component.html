@@ -26,8 +26,8 @@
   <div class="col-12 md:col-6">
     <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
       <p>
-        Actualmente tenemos
-        {{ clients.length | i18nPlural: clientsMap }} cliente esperando.
+        Actualmente
+        {{ clients.length | i18nPlural: clientsMap }}.
       </p>
       <button
         pButton
